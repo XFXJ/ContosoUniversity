@@ -1,0 +1,6 @@
+D:\ContosoUniversity\ContosoUniversity后台作业\ContosoUniversity\ConsoleAPI\bin\Debug\ConsoleAPI.exe.config
+D:\ContosoUniversity\ContosoUniversity后台作业\ContosoUniversity\ConsoleAPI\bin\Debug\ConsoleAPI.exe
+D:\ContosoUniversity\ContosoUniversity后台作业\ContosoUniversity\ConsoleAPI\bin\Debug\ConsoleAPI.pdb
+D:\ContosoUniversity\ContosoUniversity后台作业\ContosoUniversity\ConsoleAPI\bin\Debug\JsonObject.dll
+D:\ContosoUniversity\ContosoUniversity后台作业\ContosoUniversity\ConsoleAPI\obj\Debug\ConsoleAPI.exe
+D:\ContosoUniversity\ContosoUniversity后台作业\ContosoUniversity\ConsoleAPI\obj\Debug\ConsoleAPI.pdb

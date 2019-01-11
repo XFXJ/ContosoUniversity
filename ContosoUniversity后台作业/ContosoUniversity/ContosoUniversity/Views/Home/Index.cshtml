@@ -1,9 +1,69 @@
-﻿@{
+﻿@using ContosoUniversity.Commno
+@model Weather
+@{
     ViewBag.Title = "主页";
 }
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=XX4CVlFmyMW1SYkbHcZZgbzktlW8HCGV"></script>
 
 <div class="jumbotron">
     <h1>2017软件软件2班</h1>
     <p>您可以从Microsoft Code Gallery学习课程</p>
     <p><a class="btn btn-default" href="https://docs.microsoft.com/zh-cn/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application">学习课程 &raquo;</a></p>
 </div>
+
+<h3>@Model.City 今日天气</h3>
+<ul>
+    <li>今日日期：@Model.Date_y</li>
+    <li>星期：@Model.Week</li>
+    <li>温度：@Model.Temperature</li>
+    <li>风向：@Model.Wind</li>
+    <li>穿衣指数：@Model.Dressing_index</li>
+    <li>穿衣推荐：@Model.Dressing_advice</li>
+    <li>紫外线强度：@Model.Uv_index</li>
+    <li>洗车指数：@Model.Wash_index</li>
+    <li>旅游指数：@Model.Travel_index</li>
+    <li>晨练指数：@Model.Exercise_index</li>
+    <li>当前湿度：@Model.Humidity</li>
+</ul>
+
+<h3 id="City">今日天气</h3>
+
+
+ <li id="Temperature"> >温度:</li>
+ <li  id="Humidity"> > 当前湿度:</li>
+
+
+<script type="text/javascript">
+
+	var geolocation = new BMap.Geolocation();
+	geolocation.getCurrentPosition(function(r){
+		if(this.getStatus() == BMAP_STATUS_SUCCESS){
+		    //console.log(r.address.city);
+		    var ajax = new XMLHttpRequest();
+		    ajax.open("POST", "../home/getweather", true);
+		    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		    ajax.send("city="+r.address.city);
+		    ajax.responseType = "json";
+		    ajax.onload=function()
+		    {
+		        if(ajax.status ===200)
+		        {
+		            json = ajax.response;
+		            document.querySelector("#City").textContent = json.City;
+		            document.querySelector("#Temperature").textContent = json.Temperature;
+		            document.querySelector("#Humidity").textContent = json.Humidity;
+		            console.log(json);
+		        }
+		        else
+		        {
+                    console.log('网络请求失败' + ajax.status + ':' + ajax.statusText)
+		        }
+		    }
+		}
+		else {
+			console.log("定位失败")
+		}
+	},{enableHighAccuracy: true})
+
+</script>
